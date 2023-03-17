@@ -69,3 +69,31 @@ create table Employee_department( Emp_Id int,
                             dept_Id int,
                             foreign key(dept_Id) references department(dept_Id)
                             );
+select * from company,employee,payroll,department,Employee_department;
+insert into company(c_Id,company_name) values (10,"Bridgelabz");
+insert into department(dept_name,dept_Id) values("Sales",101);
+insert into department(dept_name,dept_Id) values("Marketing",105);
+alter table employee drop phonenumber;
+alter table employee add phonenumber bigint(20);
+insert into employee(Emp_Id,Emp_name,phonenumber,address,gender,c_id,dept_name) values(1,"Bill",9553273958,"Hyderabad",'M',10,"Sales");
+insert into employee(Emp_Id,Emp_name,phonenumber,address,gender,c_id,dept_name) values(2,"Terisa",96663273968,"Warangal",'F',10,"Sales");
+insert into employee(Emp_Id,Emp_name,phonenumber,address,gender,c_id,dept_name) values(3,"Mark",9867564343,"Vizag",'M',10,"Marketing");
+insert into payroll(Salary,Emp_Id) values(300000,2);
+insert into payroll(Salary,Emp_Id) values(100000,1);
+insert into payroll(Salary,Emp_Id) values(400000,3);
+insert into Employee_department(Emp_Id,dept_Id) values(1,101);
+insert into Employee_department(Emp_Id,dept_Id) values(2,101);
+insert into Employee_department(Emp_Id,dept_Id) values(3,105);
+select salary from payroll where Emp_Id=2;
+select salary from payroll where Emp_Id=3;
+select salary from payroll where Emp_Id=1;
+select sum(salary) from payroll,employee where gender='F' group by gender;
+select sum(salary) from payroll,employee where gender='M' group by gender;
+select avg(salary) from payroll,employee where gender='F' group by gender;
+select avg(salary) from payroll,employee where gender='M' group by gender;
+select max(salary) from payroll,employee where gender='F' group by gender;
+select max(salary) from payroll,employee where gender='M' group by gender;
+select min(salary) from payroll,employee where gender='F' group by gender;
+select min(salary) from payroll,employee where gender='M' group by gender;
+select count(salary) from payroll,employee where gender='F' group by gender;
+select count(salary) from payroll,employee where gender='M' group by gender;
